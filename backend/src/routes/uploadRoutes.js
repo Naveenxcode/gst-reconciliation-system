@@ -4,7 +4,9 @@ const upload = require("../utils/upload");
 const {
   uploadFiles,
   getAllResults,
-  getSummary
+  getSummary,
+  getFilteredResults,
+  getVendorInsights, 
 } = require("../controllers/uploadController");
 
 router.post(
@@ -18,5 +20,7 @@ router.post(
 
 router.get("/reconciliation", getAllResults);
 router.get("/summary", getSummary);
+router.get("/filter", getFilteredResults);
+router.get("/vendor-insights", getVendorInsights);
 
 module.exports = router; 
