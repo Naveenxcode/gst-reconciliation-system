@@ -22,6 +22,9 @@ exports.uploadFiles = async (req, res) => {
 };
 
 
+
+
+
 exports.getAllResults = async (req, res) => {
   try {
     const result = await pool.query(
@@ -33,6 +36,7 @@ exports.getAllResults = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 exports.getSummary = async (req, res) => {
   try {

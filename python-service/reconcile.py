@@ -32,7 +32,7 @@ def reconcile(purchase_file, gstr2b_file):
             if amount == gstr2b_dict[key]:
                 status = "MATCHED"
             else:
-                status = "MISMATCH"
+                status = "MISMATCH_AMOUNT"
         else:
             status = "MISSING_IN_2B"
 
@@ -50,7 +50,7 @@ def reconcile(purchase_file, gstr2b_file):
                 "invoice_no": key[1],
                 "status": "MISSING_IN_BOOKS"
             })
-
+            
     return results
 
 if __name__ == "__main__":
@@ -60,3 +60,4 @@ if __name__ == "__main__":
     result = reconcile(purchase_file, gstr2b_file)
 
     print(json.dumps(result))
+
