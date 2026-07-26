@@ -24,7 +24,8 @@ export default function Upload({setRefresh}) {
       alert("Reconciliation completed");
     } catch (err) {
       console.error(err);
-      alert("Error uploading files");
+      const backendError = err.response?.data?.error || "Error uploading files";
+      alert("Upload failed: " + backendError);
     } finally {
       setLoading(false);
     }
