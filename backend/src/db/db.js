@@ -17,4 +17,23 @@ const poolConfig = process.env.DATABASE_URL
 
 const pool = new Pool(poolConfig);
 
+const initDB = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS reconciliation_results (
+        id SERIAL PRIMARY KEY,
+        gstin TEXT NOT NULL,
+        invoice_no TEXT NOT NULL,
+        status TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log("Database initialized & table verified.");
+  } catch (error) {
+    console.error("Database Initialization Error: ", error.message);
+  }
+};
+
+initDB();
+
 module.exports = pool;
